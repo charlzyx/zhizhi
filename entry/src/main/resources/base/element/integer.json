@@ -1,0 +1,32 @@
+{
+  "integer": [
+    {
+      "name": "fz_max",
+      "value": 24
+    },
+    {
+      "name": "fz_huge",
+      "value": 20
+    },
+    {
+      "name": "fz_large",
+      "value": 18
+    },
+    {
+      "name": "fz_big",
+      "value": 16
+    },
+    {
+      "name": "fz_normal",
+      "value": 14
+    },
+    {
+      "name": "fz_small",
+      "value": 10
+    },
+    {
+      "name": "fz_mini",
+      "value": 10
+    }
+  ]
+}

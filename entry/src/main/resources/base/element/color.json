@@ -3,6 +3,30 @@
     {
       "name": "start_window_background",
       "value": "#FFFFFF"
+    },
+    {
+      "name": "white",
+      "value": "#ffffff"
+    },
+    {
+      "name": "light",
+      "value": "#cecece"
+    },
+    {
+      "name": "text_primary",
+      "value": "#171717"
+    },
+    {
+      "name": "text_2nd",
+      "value": "#393939"
+    },
+    {
+      "name": "text_hint",
+      "value": "#8c8c8c"
+    },
+    {
+      "name": "text_hl",
+      "value": "#4c9ad6"
     }
   ]
 }

@@ -1,5 +1,7 @@
+import router from '@ohos.router'
 import { http } from '../http'
 import { Awaited, PickArrayItem } from '../type'
+import { HueImage } from './HueImage'
 
 type Item = Awaited<ReturnType<typeof http.latest>>
 type TopStory = PickArrayItem<Item["top_stories"]>
@@ -56,37 +58,18 @@ export struct PPT {
         Swiper(this.swiper) {
           LazyForEach(this.list, (item: TopStory) => {
             Stack({ alignContent: Alignment.Bottom }) {
-              Stack({ alignContent: Alignment.Bottom }) {
-                Column() {
-                }.width('100%').height(200).linearGradient(
-                  {
-                    colors: [
-                      ['rgba(255, 255, 255, 0.1)', 0.0],
-                      ['rgba(255, 255, 255, 0.3)', 0.3],
-                      [+item.image_hue, 0.7],
-                      [+item.image_hue, 1.0],
-                    ]
-                  }
-                ).opacity(0.9)
-
-                Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.SpaceBetween }) {
-                  Text(item.title)
-                    .fontColor($r('app.color.white'))
-                    .fontSize(24)
-                    .maxLines(2)
-                    .width('100%')
-                    .textOverflow({
-                      overflow: TextOverflow.Ellipsis
-                    })
-
-                  Text(item.hint)
-                    .width('100%')
-                    .fontColor($r('app.color.light')).fontSize(14).textAlign(TextAlign.Start)
-                }.width('100%').height(100).padding(16)
-              }
-              .width('100%').height('100%').backgroundImage(item.image).backgroundImageSize(ImageSize.Cover)
-
-            }
+              HueImage({ image: item.image !, hue: +item.image_hue, title: item.title !, hint: item.hint ! })
+            }.onClick(() => {
+              router.replaceUrl({ url: 'pages/Info', params: {
+                id: item.id
+              } }, router.RouterMode.Single, (err) => {
+                if (err) {
+                  console.error(`Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
+                  return;
+                }
+                console.info('Invoke replaceUrl succeeded.');
+              })
+            })
           }, (item: TopStory) => item.id.toString())
         }
         .autoPlay(true)

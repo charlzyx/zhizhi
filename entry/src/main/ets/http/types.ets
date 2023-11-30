@@ -38,6 +38,7 @@ export type Story = {
   title: string;
   // 获得的图片同 最新消息 获得的图片分辨率不同。这里获得的是在文章浏览界面中使用的大图。
   image: string;
+  image_hue: string;
   // 供在线查看内容与分享至 SNS 用的 URL
   share_url: string;
   // 供手机端的 WebView(UIWebView) 使用

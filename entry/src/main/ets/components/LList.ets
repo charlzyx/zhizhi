@@ -1,4 +1,5 @@
 import dayjs from 'dayjs'
+import router from '@ohos.router'
 import { http } from '../http'
 import { Awaited, PickArrayItem } from '../type'
 
@@ -58,7 +59,7 @@ export struct LList {
                     .textOverflow({ overflow: TextOverflow.Ellipsis })
                     .maxLines(2)
                     .margin({ bottom: 8 })
-                  Text(item.hint + " · " + "n分钟阅读").fontSize(12).fontColor($r('app.color.text_hint'))
+                  Text(item.hint).fontSize(12).fontColor($r('app.color.text_hint'))
                 }
                 .alignItems(HorizontalAlign.Start)
                 .justifyContent(FlexAlign.SpaceBetween)
@@ -66,14 +67,29 @@ export struct LList {
                 .flexShrink(1)
                 .flexBasis(1)
 
+
                 Flex({ direction: FlexDirection.Column, justifyContent: FlexAlign.SpaceBetween }) {
                   Image(item.images[0]).objectFit(ImageFit.Cover).width(72).height(72).borderRadius(3)
                 }.width(90).height(90).padding(9)
               }
               .padding({ left: 16, right: 16 })
               .height(100)
+
             }
-          }
+          }.onClick(() => {
+            console.log("WTF")
+            router.replaceUrl({ url: 'pages/Info', params: {
+              id: item.id
+            } }, router.RouterMode.Single, (err) => {
+              if (err) {
+                console.error(`Invoke replaceUrl failed, code is ${err.code}, message is ${err.message}`);
+                return;
+              }
+              console.info('Invoke replaceUrl succeeded.');
+            })
+
+          })
+
         }, (item: Story) => (item.id ?? item.date).toString())
       }
       .listDirection(Axis.Vertical)

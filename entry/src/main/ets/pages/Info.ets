@@ -65,15 +65,15 @@ struct Info {
           // .userAgent(Info.userAgent)
           .width('100%')
           .height('100%')
-          .borderWidth(2)
-          .borderColor("blue")
-          .borderStyle(BorderStyle.Dashed)
+        // .borderWidth(2)
+        // .borderColor("blue")
+        // .borderStyle(BorderStyle.Dashed)
       }
       .width('100%')
       .height('100%')
-      .borderWidth(2)
-      .borderColor("green")
-      .borderStyle(BorderStyle.Dashed)
+      // .borderWidth(2)
+      // .borderColor("green")
+      // .borderStyle(BorderStyle.Dashed)
     }
   }
 }
